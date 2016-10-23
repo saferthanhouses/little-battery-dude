@@ -1,0 +1,35 @@
+body {
+  font-family: sans-serif;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#stats-row-container {
+  display: flex;
+  justify-content: center
+}
+
+#stats-container {
+  height: 15vh;
+}
+
+#battery-container {
+  display: flex;
+  justify-content: center;
+}
+
+#battery {
+  height: 80vh;
+}
+
+#happy {
+  display: none;
+}
+
+#colophon {
+  display: flex;
+  justify-content: center;
+}
