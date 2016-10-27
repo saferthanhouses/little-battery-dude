@@ -1,5 +1,23 @@
 body {
   font-family: sans-serif;
+  /*background: #948E99;*/
+  /*background: -webkit-linear-gradient(to left, #948E99 , #2E1437);  */
+  /*background: linear-gradient(to left, #948E99 , #2E1437); */
+
+  background: #556270; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #556270 , #FF6B6B); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #556270 , #FF6B6B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: monospace;
+}
+
+#heart {
+  width: 16px;
+  height: 16px;
+}
+
+#somewhere {
+  width: 16px;
+  height: 16px;
 }
 
 #main-container {
@@ -9,7 +27,7 @@ body {
 
 #stats-row-container {
   display: flex;
-  justify-content: center
+  justify-content: space-around;
 }
 
 #stats-container {
@@ -32,4 +50,31 @@ body {
 #colophon {
   display: flex;
   justify-content: center;
+}
+
+#stats-container {
+  /*background: white url('border.svg') no-repeat;*/
+  border: 10px solid white;
+  border-image: url('border.svg');
+  border-image-slice: 30;
+  border-image-width: 3;
+  border-image-outset: 3;
+  /*border-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50'><defs><linearGradient id='redgradient'><stop offset='0' stop-color='%23FFC14D'/><stop offset='0.362' stop-color='%23FF4834'/><stop offset='1' stop-color='%233B0300'/></linearGradient></defs><g id='Layer_1'><path d='M0,0 L50,0 L50,50 L0,50 L0,0 z' fill='url(%23redgradient)' width='100%' height='100%'/></g></svg>") 10% stretch;*/
+  padding:30px;
+}
+
+.md-container {
+  width: 150px;
+  height: 150px;
+  border: 10px solid black;
+}
+
+.border-image-gradient {
+  border: 10px solid pink;
+  border-image: repeating-linear-gradient( 45deg, pink, pink 1%, purple 1%, purple 8%) 10;
+}
+
+.border-image-svg {
+  border: 10px solid white;
+  border-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50'><defs><linearGradient id='redgradient'><stop offset='0' stop-color='%23FFC14D'/><stop offset='0.362' stop-color='%23FF4834'/><stop offset='1' stop-color='%233B0300'/></linearGradient></defs><g id='Layer_1'><path d='M0,0 L50,0 L50,50 L0,50 L0,0 z' fill='url(%23redgradient)' width='100%' height='100%'/></g></svg>") 10% stretch;
 }

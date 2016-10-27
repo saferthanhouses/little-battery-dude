@@ -2,98 +2,69 @@
 Very tiny battery api app w. service workers for offline (for use with offline widgets flow)
 ******************************************/
 
+// install service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+  }).catch(function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+  });
+}
+
+// $ will never die 
 const $ = document.querySelector.bind(document)
 
-document.addEventListener('DOMContentLoaded', () =>{
+// wait till window (all images) are loaded (not just dom/document)
+window.addEventListener('load', () =>{
 
-  let statsContainer = $('#stats-container')
-  let dcTimeSpan = statsContainer.querySelector('.discharge-time')
+  // get svg's document
+  let batteryDom = $('#battery')
+  let svgDoc = batteryDom.contentDocument
+  let svg$ = svgDoc.querySelector.bind(svgDoc)
+  let mouth = svg$('#mouth')
+  let background = svg$('rect#background')
+  
+  function setupDischarging(battery){  
+    let yDisp = background.y.baseVal.value;
+    let height = background.height.baseVal.value;
+    
+    function setBGHeight(perc){
+      let newHeight = height * perc
+      let newY = yDisp + (height - newHeight)
+      background.style.y = newY
+      background.style.height = newHeight
+    }
+    
+    function onDischargeChange(battery){
+      console.log(battery.level);
+      if (battery.level < 0.5) {
+        if (!mouth.classList.contains('sad')) {
+          mouth.classList.toggle('sad')
+          mouth.classList.toggle('happy')
+        }
+      }
+      setBGHeight(battery.level)
+    }
+
+    onDischargeChange(battery)
+    battery.ondischargetimechage = onDischargeChange
+  }
 
   navigator.getBattery()
-  .then( battery => {
-    console.log(battery);
-    battery.onchargingchange = onChargingChange(battery)
-    battery.ondischargingtimechange = onDischargeChange(battery)
-    if (battery.charging){
-      setupCharging()
-    } else {
-      setupDischarging()
-    }
-  })
-  .catch(console.error)
-
-  function onChargingChange(){
-    console.log("charging change");
-  }
-
-  function onDischargeChange(dischargeTime){
-    dcTimeSpan.innerHTML = dischargeTime
-  }
-
-  function setupCharging(){}
-
-  // const batteryMeter = new BatteryMeter()
+    .then( battery => {
+      if (battery.charging){
+        setupCharging(battery)
+      } else {
+        setupDischarging(battery)
+      }
+    })
+    .catch(console.error)
 })
 
-
-// class BatteryMeter {
-//   constructor(){
-//     navigator.getBattery()
-//       .then( battery => {
-//         this.battery = battery
-//         battery.onchargingchange = this.onChargingChange.bind(this)
-//         battery.ondischargingtimechange = this.onDischargeChange.bind(this)
-//         // battery.onlevelchange = this.onLevelChange.bind(this)
-//         if (battery.charging){
-//           this.setupCharging()
-//         } else {
-//           this.setupDischarging
-//         }
-//       })
-//       .catch(console.error)
-//   }
-//   setupDischarging(){
-//     console.log("setupDischarge");
-//     // setup dom here
-//   }
-//   setupCharge(){
-//     console.log("setupCharge");
-//   }
-//   changeDischarge(){
-//     // change dom here
-//   }
-//   onLevelChange(newLevel){
-//     console.log("levelChanged", newLevel);
-//   }
-//   onDischargeChange(newDischarge){
-//     console.log("newDischarge", this.battery.dischargingTime);
-//     setupDischarge(this.battery.dischargingTime)
-    
-//   }
-//   onChargingChange(){
-//     console.log("charging changed");
-//   }
-// }
+function setupCharging(){
+  console.log("actually i'm charging")
+}
 
 
-// function setupCallback
-
-// const myMeter = new BatteryMeter()
-
-// const batteryMeter = navigator.getBattery()
-
-// batteryMeter.then( battery => {
-//   let level = battery.level;
-//   let dischargetime = battery.dischargetime;
-//   battery.onlevelchange = (lvl) =>{
-//     console.log("level", lvl);
-//    level = lvl;
-//   }
-//   battery.ondischargingtimechange = (tm) => {
-//     dischargeTime = tm;
-//     console.log("discharge", dischargeTime);
-//   } 
-
-//   console.info("battery", battery)
-// })
-// .catch( err => console.error("err", err))

@@ -1,0 +1,21 @@
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 1052.4 744.09">
+	<defs>
+		<filter id="filter4032" color-interpolation-filters="sRGB">
+			<feTurbulence baseFrequency="0.04" seed="0" result="result91" numOctaves="3" type="turbulence"/>
+			<feDisplacementMap scale="6.6" yChannelSelector="G" in2="result91" xChannelSelector="R" in="SourceGraphic"/>
+		</filter>
+	</defs>
+	<metadata>
+		<rdf:RDF>
+			<cc:Work rdf:about="">
+				<dc:format>image/svg+xml</dc:format>
+				<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+				<dc:title/>
+			</cc:Work>
+		</rdf:RDF>
+	</metadata>
+	<g transform="translate(0,-308.2677)">
+		<rect stroke-linejoin="miter" stroke-dasharray="none" fill-opacity="0" transform="matrix(0,0.99611161,-3.7918526,0,1235.528,299.8709)" height="228.29" filter="url(#filter4032)" width="626.29" stroke="#000" stroke-miterlimit="4" y="69.128" x="61.714" stroke-width="3.1"/>
+	</g>
+</svg>
