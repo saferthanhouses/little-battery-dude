@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'PressSt';
+  src: url(assets/PressStart2P.ttf);
+}
+
 body {
   font-family: sans-serif;
   /*background: #948E99;*/
@@ -8,6 +13,15 @@ body {
   background: -webkit-linear-gradient(to left, #556270 , #FF6B6B); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, #556270 , #FF6B6B); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   font-family: monospace;
+}
+
+#message {
+  padding-top: 30px;
+  font-family: 'PressSt', sans-serif;
+}
+
+#message > p {
+  text-align: center;
 }
 
 #heart {
@@ -23,6 +37,7 @@ body {
 #main-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 #stats-row-container {

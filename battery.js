@@ -3,15 +3,15 @@ Very tiny battery api app w. service workers for offline (for use with offline w
 ******************************************/
 
 // install service worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js').then(function(registration) {
-    // Registration was successful
-    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-  }).catch(function(err) {
-    // registration failed :(
-    console.log('ServiceWorker registration failed: ', err);
-  });
-}
+// if ('serviceWorker' in navigator) {
+//   navigator.serviceWorker.register('/sw.js').then(function(registration) {
+//     // Registration was successful
+//     console.log('ServiceWorker registration successful with scope: ', registration.scope);
+//   }).catch(function(err) {
+//     // registration failed :(
+//     console.log('ServiceWorker registration failed: ', err);
+//   });
+// }
 
 // $ will never die 
 const $ = document.querySelector.bind(document)
@@ -24,8 +24,20 @@ window.addEventListener('load', () =>{
   let svgDoc = batteryDom.contentDocument
   let svg$ = svgDoc.querySelector.bind(svgDoc)
   let mouth = svg$('#mouth')
+  let eyes = svg$('#eyes')
   let background = svg$('rect#background')
   
+
+
+  function onChargingChange({currentTarget}){
+    let battery = currentTarget, isCharging = battery.charging;
+    if (isCharging){
+      setupCharging(battery)
+    } else {
+      setupDischarging(battery)
+    }
+  }
+
   function setupDischarging(battery){  
     let yDisp = background.y.baseVal.value;
     let height = background.height.baseVal.value;
@@ -37,19 +49,33 @@ window.addEventListener('load', () =>{
       background.style.height = newHeight
     }
     
-    function onDischargeChange(battery){
+    function onLevelChange(battery){
       console.log(battery.level);
-      if (battery.level < 0.5) {
-        if (!mouth.classList.contains('sad')) {
-          mouth.classList.toggle('sad')
-          mouth.classList.toggle('happy')
-        }
+      if (battery.level < 0.5 && battery.level >= 0.35) {
+        mouth.setAttribute('class', 'mouth-neutral')
+        eyes.setAttribute('class', 'eyes-neutral')
+      } else if (battery.level < 0.35 && battery.level >= 0.10) {
+        mouth.setAttribute('class', 'mouth-sad')
+        eyes.setAttribute('class', 'eyes-sad')
+      } else if (battery.level < 0.10) {
+        mouth.setAttribute('class', 'mouth-wobbly')
+        eyes.setAttribute('class', 'eyes-wobbly')
       }
       setBGHeight(battery.level)
     }
 
-    onDischargeChange(battery)
-    battery.ondischargetimechage = onDischargeChange
+    onLevelChange(battery)
+    battery.onlevelchange = onLevelChange
+  }
+
+  function setupCharging(){
+    console.log("actually i'm charging")
+
+    // mouth.classList.toggle("mouth-happy")
+    mouth.setAttribute('class', 'mouth-happy')
+    eyes.setAttribute('class', "eyes-happy")
+
+    // what happens to the fill when charging?
   }
 
   navigator.getBattery()
@@ -59,12 +85,9 @@ window.addEventListener('load', () =>{
       } else {
         setupDischarging(battery)
       }
+      battery.onchargingchange = onChargingChange
     })
     .catch(console.error)
 })
-
-function setupCharging(){
-  console.log("actually i'm charging")
-}
 
 

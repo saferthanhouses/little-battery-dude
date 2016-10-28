@@ -14,6 +14,7 @@ self.addEventListener('install', function(event) {
         'reset.css',
         'style.css',
         './battery.js',
+        '/assets/PressStart2P.ttf',
         '/assets/batteries-n-stuff-optimized.svg',
         '/assets/joesomewhere.png',
         '/assets/heart.svg'

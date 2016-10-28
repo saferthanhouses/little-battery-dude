@@ -127,27 +127,56 @@
 	<path stroke-linejoin="miter" d="m1986.8,718.38c12.917,6.6875,19.828-1.5328,33.157-6.0209,12.631-4.253,31.85-4.5853,38.288-5.793" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="4.88458443" fill="none"/>
 	<path stroke-linejoin="miter" d="m1971.1,683.67c32.129,14.16,84.002-4.6659,103.18-6.0689" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="5.67295504" fill="none"/>
 	<path stroke-linejoin="miter" d="m1973.2,752.06c43.19,6.6892,109.77-17.146,103.2,5.7508" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="5.67295504" fill="none"/>
-	<path stroke-linejoin="round" d="M25.454,144.02c-2.528,279.83-5.056,559.65-7.584,839.48,236.44-1.72,472.86-3.44,709.3-5.15-2.83-279.61-5.66-559.23-8.5-838.84-227.47,4.21-430.55,26.71-693.22,4.51z" stroke="#000" stroke-miterlimit="4" stroke-width="15.76342392" fill="#6a6a6a"/>
+	<path stroke-linejoin="round" d="M25.454,144.02c-2.528,279.83-5.056,559.65-7.584,839.48,236.44-1.72,472.86-3.44,709.3-5.15-2.83-279.61-5.66-559.23-8.5-838.84-227.47,4.21-430.55,26.71-693.22,4.51z" stroke="#000" stroke-miterlimit="4" stroke-width="15.76342392" fill="url(#grad1)"/>
 	<path stroke-linejoin="round" d="m60.364,170.66c-3.271,261.92-6.5422,523.84-9.8135,785.76,211.77-0.58302,423.54-1.1666,635.31-1.7483-1.5254-261.74-3.0544-523.49-4.587-785.23-203.75,2.9546-385.72,23.132-620.91,1.2189z" stroke="#000" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="7.97073555" fill="#FFF" id="box"/>
 	<rect xmlns="http://www.w3.org/2000/svg" id="background" stroke-linejoin="miter" stroke-dasharray="none" ry="0" height="778.48914" width="622.08" stroke="#000" stroke-miterlimit="4" y="173.87685" x="58.961" stroke-width="10" fill="url(#grad1)"/>
 	<path d="m461.25,53.74,0,0.39413,0,81.551,0,0.39412,0.39835,0,157.63,0,0.39172,0,0-0.39412,0-81.551,0-0.39413-0.39172-0.00001-157.63-0.00001zm-21.817,89.349,156.84,0,22.614-7.7977-156.85,0z" style="baseline-shift:baseline;block-progression:tb;color:#000000;direction:ltr;text-indent:0;text-align:start;enable-background:accumulate;text-transform:none;" fill-rule="nonzero"/>
 	<path style="baseline-shift:baseline;block-progression:tb;color:#000000;direction:ltr;text-indent:0;text-align:start;enable-background:accumulate;text-transform:none;" fill-rule="nonzero" d="m150.5,68.538,0,0.39381,0,81.551,0,0.39435,0.39029,0,157.64,0,0.39855,0,0-0.39435,0-81.551,0-0.39381-0.39845,0-157.64,0zm-21.828,89.348,156.85,0.0001,22.608-7.7978-156.85,0z"/>
 	<path stroke-linejoin="miter" d="m133.41,391.02c139.95,15.775,359.92-0.99736,442.06-1.5668" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="14.18704605" fill="none"/>
-	<path stroke-linejoin="miter" d="m126.83,516.19c148.93,15.511,383.02-0.98167,470.42-1.5417" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="12.88262367" fill="none"/>
+	<path stroke-linejoin="miter" id="eyes" class="eyes-neutral" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="12.88262367" fill="none"/>
 	<path stroke-linejoin="miter" d="m199.67,828.16c113.43,13.672,290.56-8.698,356.86-11.044" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="10.91586018" fill="none"/>
 	<path stroke-linejoin="miter" d="m196.19,257.79c106.02,16.958,272.67-1.073,334.89-1.6863" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="14.22633457" fill="none"/>
-	<path stroke-linejoin="miter" id="mouth" class="happy" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="12.61067295" fill="none"/>
+	<path stroke-linejoin="miter" id="mouth" class="mouth-neutral" stroke="#000" stroke-linecap="butt" stroke-miterlimit="4" stroke-dasharray="none" stroke-width="12.61067295" fill="none"/>
 	<style>
+
+
+		#eyes {
+			transition: d 2s cubic-bezier(.17,.67,.83,.67);
+		}
+
+		.eyes-neutral {
+			d: path('m163.88,547.45c67.518,3.1245,60.233,2.8791,148.3,0.62478m99.567-1.1578c42.293-1.0826,72.13-0.75941,96.562-0.16198,26.441,0.64657,46.551,1.6143,69.264,1.4688')
+		}
+
+		.eyes-happy {
+			d:path("m158.09,553.24c46.679-55.921,96.124-17.961,162.19,1.7825m89.147-3.4733c151.19-58.473,122.21-5.5615,165.83-4.482")
+		}
+
+		.eyes-sad {
+			d:path('m176.61,548.61c83.254,48.302,87.771,31.618,145.98,0.62478m91.463,1.1577c110.4,56.428,123.9,12.099,166.98,5.9378')
+		}
+
+		.eyes-wobbly {
+			d:path('m235.66,506.93c16.801,22.25,45.949,28.471,71.093,39.809,7.536,3.3981-45.985,12.204-72.146,36.07m247.76-6.9466c-26.96-21.716-79.594-21.636-68.215-29.46,16.585-11.403,48.68-23.023,55.746-38.698')
+		}
 
 		#mouth {
 			transition: d 2s cubic-bezier(.17,.67,.83,.67);
 		}
 
-		.happy {
+		.mouth-happy {
 			d: path('m152.07,648.18c12.404,68.754,152.42,90.346,232.6,90.773,86.371,0.46024,198.18-44.039,209.29-100.69')
 		}
-		.sad {
+		.mouth-sad {
 			d: path('m150.51,724.52c12.404-68.754,152.42-90.346,232.6-90.773,86.371-0.46024,198.18,44.039,209.29,100.69')
+		}
+
+		.mouth-neutral {
+			d: path('m143.56,696.73c77.238,20.393,123.46,30.78,218.71,27.318,97.254-3.5345,132.91-10.376,219.71-27.821')
+		}
+
+		.mouth-wobbly {
+			d: path('m152.83,704.84c17.128,4.5224,40.836-15.76,55.786-12.264,10.193,2.3838,14.294,47.356,24.158,49.23,9.9501,1.8905,33.766-47.426,43.946-46.082,15.946,2.1062,23.259,44.047,41.557,44.729,18.045,0.67165,29.661-43.37,52.102-44.185,9.4903-0.3449,25.341,44.431,33.763,44.017,11.056-0.54434,24.755-42.834,34.388-43.525,15.655-1.124,22.796,45.005,36.334,43.386,18.258-2.1838,25.097-41.926,43.851-45.292,19.058-3.4206,24.61,24.882,49.377,19.904')
 		}
 
 		#background {
